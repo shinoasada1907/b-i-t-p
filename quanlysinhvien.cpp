@@ -13,9 +13,9 @@ struct HoTen {
 };
 
 struct DiemMH {
-	float toan;
-	float ly;
-	float anh;
+	float mon1;
+	float mon2;
+	float mon3;
 	float tbc;
 };
 
@@ -28,13 +28,13 @@ struct SinhVien {
 };
 
 void nhapDiem(struct DiemMH* diem) {
-	printf("Toan: ");
-	scanf("%f", &diem->toan);
-	printf("ly: ");
-	scanf("%f", &diem->ly);
-	printf("Anh: ");
-	scanf("%f", &diem->anh);
-	diem->tbc = (diem->toan + diem->ly + diem->anh) / 3;
+	printf("Mon 1: ");
+	scanf("%f", &diem->mon1);
+	printf("Mon 2: ");
+	scanf("%f", &diem->mon2);
+	printf("Mon 3: ");
+	scanf("%f", &diem->mon3);
+	diem->tbc = (diem->mon1 + diem->mon2 + diem->mon3) / 3;
 }
 
 void nhapHoTen(struct HoTen* ten) {
@@ -63,7 +63,7 @@ struct SinhVien nhapSV() {
 void hienThiTTSV(struct SinhVien sv) {
 	printf("%-10d %-10s %-20s %-10s %-10d %-10s %-10.2f %-10.2f %-10.2f %-10.2f\n",
 	sv.ma, sv.hoVaTen.ho, sv.hoVaTen.dem, sv.hoVaTen.ten, sv.tuoi, sv.gioiTinh,
-	sv.diem.toan, sv.diem.ly, sv.diem.anh, sv.diem.tbc);
+	sv.diem.mon1, sv.diem.mon2, sv.diem.mon3, sv.diem.tbc);
 }
 
 void sapXepTheoTen(struct SinhVien* ds, int slsv) {
@@ -120,7 +120,7 @@ void ghiFile(struct SinhVien* ds, int slsv) {
 		struct SinhVien sv = ds[i];
 		fprintf(fOut, "%-10d %-10s %-20s %-10s %-10d %-10s %-10.2f %-10.2f %-10.2f %-10.2f\n",
 		sv.ma, sv.hoVaTen.ho, sv.hoVaTen.dem, sv.hoVaTen.ten, sv.tuoi, sv.gioiTinh,
-		sv.diem.toan, sv.diem.ly, sv.diem.anh, sv.diem.tbc);
+		sv.diem.mon1, sv.diem.mon2, sv.diem.mon3, sv.diem.tbc);
 	}
 	fclose(fOut);
 }
@@ -133,7 +133,7 @@ void docFile(struct SinhVien* ds, int* slsv) {
 			struct SinhVien sv;
 			fscanf(fOut, "%10d %10s %20[^\n] %10s %10d %10s %10f %10f %10f %10f\n",
 			&sv.ma, sv.hoVaTen.ho, sv.hoVaTen.dem, sv.hoVaTen.ten, &sv.tuoi, sv.gioiTinh,
-			&sv.diem.toan, &sv.diem.ly, &sv.diem.anh, &sv.diem.tbc);
+			&sv.diem.mon1, &sv.diem.mon2, &sv.diem.mon3, &sv.diem.tbc);
 			
 			ds[i++] = sv;
 			if(feof(fOut)) { // thoat chuong trinh
@@ -151,7 +151,7 @@ void hienThiTenCot() {
 	"----------------------------------------------------------------\n");
 	printf("%-10s %-10s %-20s %-10s %-10s %-10s %-10s %-10s %-10s %-10s\n", 
 		"Ma SV", "Ho", "Dem", "Ten", "Tuoi", "Gioi Tinh", 
-		"Diem Toan", "Diem ly", "Diem Anh", "Diem TBC");
+		"Mon 1", "Mon 2", "Mon 3", "Diem TBC");
 }
 
 void hienThiDSSV(struct SinhVien* ds, int slsv) {
